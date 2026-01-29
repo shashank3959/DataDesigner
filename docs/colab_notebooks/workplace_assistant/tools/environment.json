@@ -1,0 +1,35 @@
+{
+  "environment_name": "workplace_assistant",
+  "description": "A simulated workplace environment with 5 databases and 26 tools for managing business activities.",
+  "system_prompt": "Today's date is Thursday, 2023-11-30 and the current time is 23:59:00. Remember the current date and time when answering queries. Meetings must not start before 9am or end after 6pm.",
+  "databases": [
+    "company_directory",
+    "email",
+    "calendar",
+    "analytics",
+    "project_management",
+    "customer_relationship_manager"
+  ],
+  "common_multi_step_patterns": [
+    {
+      "pattern": "lookup_then_action",
+      "description": "Look up a person's email using company_directory, then perform an action with that email",
+      "example_tools": ["company_directory_find_email_address", "email_send_email"]
+    },
+    {
+      "pattern": "search_then_batch_update",
+      "description": "Search for records matching criteria, then update each one",
+      "example_tools": ["customer_relationship_manager_search_customers", "customer_relationship_manager_update_customer"]
+    },
+    {
+      "pattern": "search_then_batch_delete",
+      "description": "Search for records matching criteria, then delete each one",
+      "example_tools": ["project_management_search_tasks", "project_management_delete_task"]
+    },
+    {
+      "pattern": "cross_database_coordination",
+      "description": "Query one database to get information needed to act on another",
+      "example_tools": ["email_search_emails", "calendar_create_event"]
+    }
+  ]
+}
